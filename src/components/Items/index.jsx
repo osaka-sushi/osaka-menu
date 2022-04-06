@@ -28,6 +28,7 @@ export default function Items({currentCategory}){
         setItems(data.data)
         ))
         
+        // eslint-disable-next-line
     }, [currentCategory])
 
     return(
@@ -37,8 +38,8 @@ export default function Items({currentCategory}){
           items.map(({attributes}, index) => (
             <div key={index}>
               
-              <div className='image' alt={"imagem de " + attributes.title}>
-                <img src={attributes.image_url}/>
+              <div className='image'>
+                <img src={attributes.image_url} alt={"imagem de " + attributes.title}/>
               </div>
 
               <div className='text'>

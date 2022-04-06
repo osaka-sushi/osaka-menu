@@ -16,6 +16,7 @@ export default function Location(){
         .then(({data}) => (
         setCompanyInfo(data.data[0].attributes)
         ))
+        // eslint-disable-next-line
     }, [])
 
     return(
