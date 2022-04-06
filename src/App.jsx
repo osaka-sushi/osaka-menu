@@ -2,27 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import qs from 'qs'
 
-import {Categories, Items, Layout} from './global.js'
+import {Items, Layout} from './global.js'
 
 import Header from "./components/Header";
+import Categories from './components/Categories'
 
 function App() {
 
-  const [categories, setCategories] = useState([])
   const [currentCategory, setCurrentCategory] = useState()
   const [items, setItems] = useState([])
-
-  // fetch categories
-  useEffect(() => {
-    
-
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-jales-categories`)
-    .then(({data}) => {
-      setCategories(data.data)
-      setCurrentCategory(data.data[0].attributes.title)
-    })
-    
-  }, [])
 
   // fetch current category items
   useEffect(() => {
@@ -49,19 +37,10 @@ function App() {
 
       <Header />
 
-      <Categories>
-      {
-        categories && 
-        categories.map(({attributes}, index) => (
-          <h1 key={index}
-          className={currentCategory == attributes.title ? "selected" : ""}
-          onClick={() => setCurrentCategory(attributes.title)}
-          > 
-            {attributes.title}
-          </h1>
-        ))
-      }
-      </Categories>
+      <Categories 
+      setCurrentCategory={setCurrentCategory}
+      currentCategory={currentCategory}
+      />
 
       <Items>
         {

@@ -4,13 +4,6 @@ export const Layout = styled.div`
 
 `
 
-export const Categories = styled.div`
-
-    .selected{
-        border-bottom: 1px solid red;
-    }
-`
-
 export const Items = styled.div`
     div{
         div{
