@@ -1,4 +1,4 @@
-import {Layout} from './global.js'
+import {Layout} from './styles/appStyles'
 
 import Header from "./components/Header";
 import Categories from './components/Categories'
@@ -10,18 +10,20 @@ function App() {
   const [currentCategory, setCurrentCategory] = useState()
 
   return (
-    <Layout>
+    <>
+      <Layout>
 
-      <Header />
+        <Header />
 
-      <Categories 
-      setCurrentCategory={setCurrentCategory}
-      currentCategory={currentCategory}
-      />
+        <Categories 
+        setCurrentCategory={setCurrentCategory}
+        currentCategory={currentCategory}
+        />
 
-      <Items currentCategory={currentCategory}/>
+        <Items currentCategory={currentCategory}/>
 
-    </Layout>
+      </Layout>
+    </>
   );
 }
 

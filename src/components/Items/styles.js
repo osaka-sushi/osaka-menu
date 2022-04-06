@@ -4,7 +4,7 @@ export const ItemsDiv = styled.div`
     div{
         div{
 
-            background: red;
+            background: ${props => props.theme.secondaryColor};
             clip-path: circle();
             height: 65px;
             width: 65px;
