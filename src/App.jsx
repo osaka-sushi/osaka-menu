@@ -5,8 +5,11 @@ import Categories from './components/Categories'
 import Items from './components/Items'
 import { useState } from 'react';
 import Location from './components/Location';
+import { useLocation } from './context/Location';
 
 function App() {
+
+  const {currentLocation} = useLocation()
 
   const [currentCategory, setCurrentCategory] = useState()
 
@@ -14,14 +17,20 @@ function App() {
     <>
       <Layout>
         <Location/>
-        <Header />
+        
+        {
+          currentLocation &&
+          <>
+            <Header />
 
-        <Categories 
-        setCurrentCategory={setCurrentCategory}
-        currentCategory={currentCategory}
-        />
+            <Categories 
+            setCurrentCategory={setCurrentCategory}
+            currentCategory={currentCategory}
+            />
 
-        <Items currentCategory={currentCategory}/>
+            <Items currentCategory={currentCategory}/>
+          </>
+        }
 
       </Layout>
     </>

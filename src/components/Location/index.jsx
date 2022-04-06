@@ -1,9 +1,13 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useLocation } from '../../context/Location'
+import Card from './Card'
 import {Container} from './styles'
 
 export default function Location(){
     
+    const {currentLocation} = useLocation()
+
     const [companyInfo, setCompanyInfo] = useState([])
 
     // fetch company info
@@ -15,32 +19,32 @@ export default function Location(){
     }, [])
 
     return(
-        <Container>
+        <>
             {
-                companyInfo &&
-                <>
+                (companyInfo && !currentLocation) &&
+                <Container>
                     <h1>Onde você está?</h1>
-                    <div className="location">
-                        <img src={companyInfo.logo_url} alt="logo" />
-                        <h2>
-                            Osaka Sushi Lounge
-                            <span> Jales</span>
-                        </h2>
-                        <p>Av. João Amadeu, 2464, Centro</p>
-                    </div>
+
+                    <Card 
+                    companyInfo={companyInfo}
+                    title="Osaka Sushi Lounge"
+                    city=" Jales"
+                    address="Av. João Amadeu, 2464, Centro"
+                    locationAlias="jales"
+                    />
 
                     <span/>
 
-                    <div className="location">
-                        <img src={companyInfo.logo_url} alt="logo" />
-                        <h2>
-                            Osaka Sushi Delivery
-                            <span> Santa Fé</span>
-                        </h2>
-                        <p>Av. Navarro de Andrade, 760, Centro</p>
-                    </div>
-                </>
+                    <Card
+                        companyInfo={companyInfo}
+                        title="Osaka Sushi Delivery"
+                        city=" Santa Fé"
+                        address="Av. Navarro de Andrade, 760, Centro"
+                        locationAlias="stafe"
+                    />
+        
+                </Container>
             }
-        </Container>
+        </>
     )
 }

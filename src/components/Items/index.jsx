@@ -2,10 +2,13 @@ import {Container} from './styles'
 import qs from 'qs'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useLocation } from '../../context/Location'
 
 export default function Items({currentCategory}){
 
     const [items, setItems] = useState([])
+
+    const {currentLocation} = useLocation()
 
     // fetch current category items
     useEffect(() => {
@@ -20,7 +23,7 @@ export default function Items({currentCategory}){
         }
         })
 
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-jales-items?${query}`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-items?${query}`)
         .then(({data}) => (
         setItems(data.data)
         ))
