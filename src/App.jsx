@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Categories from './components/Categories'
 import Items from './components/Items'
 import { useState } from 'react';
+import Location from './components/Location';
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
   return (
     <>
       <Layout>
-
+        <Location/>
         <Header />
 
         <Categories 

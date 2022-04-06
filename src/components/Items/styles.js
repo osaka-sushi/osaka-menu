@@ -54,7 +54,7 @@ export const Container = styled.div`
                     position: absolute;
                     left: 0;
                     bottom: -2px;
-                    
+
                     background: ${props => props.theme.secondaryColor};
                 }
             }
@@ -74,7 +74,7 @@ export const Container = styled.div`
 
                 ::before{
                     content: '';
-                    width: 2px;
+                    width: 1px;
                     height: 100%;
                     background: #fff;
 
