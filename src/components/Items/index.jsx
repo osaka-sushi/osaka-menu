@@ -34,7 +34,7 @@ export default function Items({currentCategory}){
           items.map(({attributes}, index) => (
             <div key={index}>
               
-              <div className='image'>
+              <div className='image' alt={"imagem de " + attributes.title}>
                 <img src={attributes.image_url}/>
               </div>
 

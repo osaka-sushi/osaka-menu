@@ -22,7 +22,7 @@ export default function Categories({setCurrentCategory, currentCategory}){
             categories && 
             categories.map(({attributes}, index) => (
             <h1 key={index}
-            className={currentCategory == attributes.title ? "selected" : ""}
+            className={currentCategory === attributes.title ? "selected" : ""}
             onClick={() => setCurrentCategory(attributes.title)}
             > 
                 {attributes.title}

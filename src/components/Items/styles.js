@@ -6,6 +6,10 @@ export const Container = styled.div`
 
     width: 100%;
     max-width: 720px;
+    height: 100%;
+
+    overflow-y: auto;
+    
 
     div{
 
@@ -34,14 +38,22 @@ export const Container = styled.div`
             flex-direction: column;
             justify-content: center;
 
+            h4{
+                font-size: 1rem;
+            }
+
             p{
                 font-weight: lighter;
-                width: 80%;
+                width: 100%;
+                max-width: 500px;
+                font-size: 0.8rem;
             }
             
             h5{
                 position: relative;
                 padding-left: 5px;
+
+                font-size: 1rem;
 
                 ::before{
                     content: '';

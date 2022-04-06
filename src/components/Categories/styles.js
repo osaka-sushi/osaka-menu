@@ -6,7 +6,6 @@ export const Container = styled.div`
 
     width: 100%;
     max-width: 720px;
-
     display: flex;
 
     gap: 0.5rem;
@@ -30,12 +29,28 @@ export const Container = styled.div`
 
         &:hover{
             color: ${props => props.theme.secondaryColor};
-            font-weight: bold;
         }
+
+        padding-bottom: 8px;
     }
 
     .selected{
-        border-bottom: 1px solid ${props => props.theme.secondaryColor};
+        position: relative;
+
+        color: ${props => props.theme.secondaryColor};
+
+        ::after{
+            content: '';
+            background: ${props => props.theme.secondaryColor};
+
+            width: 100%;
+            height: 2px;
+
+            position: absolute;
+            left: 0;
+            bottom: 0;
+
+        }
     }
 
     

@@ -20,7 +20,7 @@ export default function Header(){
         companyInfo &&
         <>
           <div className='image'>
-            <img src={companyInfo.logo_url}/>
+            <img src={companyInfo.logo_url} alt="logo"/>
           </div>
           <div className='text'>
             <h4>{companyInfo.name}</h4>
