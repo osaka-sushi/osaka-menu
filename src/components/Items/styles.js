@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const ItemsDiv = styled.div`
+export const Container = styled.div`
     div{
         div{
 

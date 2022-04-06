@@ -15,6 +15,11 @@ const GlobalStyle = createGlobalStyle`
         font-weight: normal;
     }
 
+    a, a:hover, a:focus, a:active {
+        text-decoration: none;
+        color: inherit;
+    }
+
 `
 
 export default GlobalStyle;

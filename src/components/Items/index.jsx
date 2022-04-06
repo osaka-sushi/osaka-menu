@@ -1,4 +1,4 @@
-import {ItemsDiv} from './styles'
+import {Container} from './styles'
 import qs from 'qs'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -28,7 +28,7 @@ export default function Items({currentCategory}){
     }, [currentCategory])
 
     return(
-        <ItemsDiv>
+        <Container>
         {
           items &&
           items.map(({attributes}, index) => (
@@ -44,6 +44,6 @@ export default function Items({currentCategory}){
             </div>
           ))
         }
-      </ItemsDiv>
+      </Container>
     )
 }

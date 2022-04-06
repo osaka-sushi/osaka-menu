@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import {HeaderDiv} from './styles'
+import {Container} from './styles'
 
 export default function Header(){
   
@@ -15,7 +15,7 @@ export default function Header(){
   }, [])
 
   return(
-      <HeaderDiv>
+      <Container>
       {
         companyInfo &&
         <>
@@ -24,6 +24,6 @@ export default function Header(){
           <p>Bem Vindo</p>
         </>
       }
-    </HeaderDiv>
+    </Container>
   )
 }

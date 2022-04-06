@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { CategoriesDiv } from "./styles"
+import { Container } from "./styles"
 
 export default function Categories({setCurrentCategory, currentCategory}){
 
@@ -17,7 +17,7 @@ export default function Categories({setCurrentCategory, currentCategory}){
     }, [])
 
     return(
-        <CategoriesDiv>
+        <Container>
         {
             categories && 
             categories.map(({attributes}, index) => (
@@ -29,6 +29,6 @@ export default function Categories({setCurrentCategory, currentCategory}){
             </h1>
             ))
         }
-        </CategoriesDiv>
+        </Container>
     )
 }

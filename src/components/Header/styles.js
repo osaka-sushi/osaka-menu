@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const HeaderDiv = styled.div`
+export const Container = styled.div`
     img{
         height: 60px;
     }
