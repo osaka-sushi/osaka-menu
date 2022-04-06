@@ -8,6 +8,8 @@ export const Container = styled.div`
     
     max-width: 720px;
 
+    padding: 0rem 1rem;
+
     display: flex;
     gap: 0.5rem;
 

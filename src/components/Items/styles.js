@@ -2,14 +2,18 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 
-    margin: 10px auto;
-
     width: 100%;
     max-width: 720px;
     height: 100%;
 
     overflow-y: auto;
     
+    padding: 1rem;
+    padding-bottom: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     div{
 
@@ -40,6 +44,19 @@ export const Container = styled.div`
 
             h4{
                 font-size: 1rem;
+                position: relative;
+
+                &::after{
+                    content: '';
+                    width: 100%;
+                    height: 1px;
+
+                    position: absolute;
+                    left: 0;
+                    bottom: -2px;
+                    
+                    background: ${props => props.theme.secondaryColor};
+                }
             }
 
             p{

@@ -2,13 +2,15 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
 
-    margin: 10px auto;
+    margin: 2rem auto;
 
     width: 100%;
     max-width: 720px;
     display: flex;
 
     gap: 0.5rem;
+
+    padding: 0 1rem;
 
     overflow-x: auto;
     -ms-overflow-style: none; 
@@ -37,14 +39,12 @@ export const Container = styled.div`
     .selected{
         position: relative;
 
-        color: ${props => props.theme.secondaryColor};
-
         ::after{
             content: '';
             background: ${props => props.theme.secondaryColor};
 
             width: 100%;
-            height: 2px;
+            height: 1px;
 
             position: absolute;
             left: 0;
