@@ -34,13 +34,20 @@ export default function Items({currentCategory}){
           items.map(({attributes}, index) => (
             <div key={index}>
               
-              <div>
+              <div className='image'>
                 <img src={attributes.image_url}/>
               </div>
 
-              <h4>{attributes.title}</h4>
-              <p>{attributes.description}</p>
-              <h5>{attributes.price}</h5>
+              <div className='text'>
+                <h4>{attributes.title}</h4>
+                <p>{attributes.description}</p>
+                <h5>
+                  {new Intl.NumberFormat('pt-BR', 
+                  { style: 'currency', currency: 'BRL' })
+                  .format(attributes.price)}
+                </h5>
+                
+              </div>
             </div>
           ))
         }
