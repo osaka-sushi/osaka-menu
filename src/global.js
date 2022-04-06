@@ -4,12 +4,6 @@ export const Layout = styled.div`
 
 `
 
-export const Header = styled.div`
-    img{
-        height: 60px;
-    }
-`
-
 export const Categories = styled.div`
 
     .selected{
@@ -20,21 +14,19 @@ export const Categories = styled.div`
 export const Items = styled.div`
     div{
         div{
-            position: relative;
+
+            background: red;
+            clip-path: circle();
+            height: 65px;
+            width: 65px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
             img{
-                height: 3.77rem;
+                height: 60px;
                 clip-path: circle();
-            }
-            span{
-                height: 65px;
-                width: 65px;
-                background-color: red;
-                position: absolute;
-                top: -2px;
-                left: 25px;
-                border-radius: 100%;
-                z-index: -1;
             }
         }
     }

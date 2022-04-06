@@ -2,14 +2,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import qs from 'qs'
 
-import {Categories, Header, Items, Layout} from './global.js'
+import {Categories, Items, Layout} from './global.js'
+
+import Header from "./components/Header";
 
 function App() {
 
   const [categories, setCategories] = useState([])
   const [currentCategory, setCurrentCategory] = useState()
   const [items, setItems] = useState([])
-  const [companyInfo, setCompanyInfo] = useState([])
 
   // fetch categories
   useEffect(() => {
@@ -43,28 +44,10 @@ function App() {
     
   }, [currentCategory])
 
-  // fetch company info
-
-  useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-jales-infos`)
-    .then(({data}) => (
-      setCompanyInfo(data.data[0].attributes)
-    ))
-  }, [])
-
   return (
     <Layout>
 
-      <Header>
-        {
-          companyInfo &&
-          <>
-            <img src={companyInfo.logo_url}/>
-            <h4>{companyInfo.name}</h4>
-            <p>Bem Vindo</p>
-          </>
-        }
-      </Header>
+      <Header />
 
       <Categories>
       {
@@ -88,7 +71,6 @@ function App() {
               
               <div>
                 <img src={attributes.image_url}/>
-                <span/>
               </div>
 
               <h4>{attributes.title}</h4>
