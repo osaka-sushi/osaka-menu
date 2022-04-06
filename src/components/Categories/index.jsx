@@ -13,7 +13,7 @@ export default function Categories({setCurrentCategory, currentCategory}){
         setCategories(data.data)
         setCurrentCategory(data.data[0].attributes.title)
         })
-        
+        // eslint-disable-next-line
     }, [])
 
     return(
