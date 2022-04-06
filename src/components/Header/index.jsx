@@ -19,9 +19,13 @@ export default function Header(){
       {
         companyInfo &&
         <>
-          <img src={companyInfo.logo_url}/>
-          <h4>{companyInfo.name}</h4>
-          <p>Bem Vindo</p>
+          <div className='image'>
+            <img src={companyInfo.logo_url}/>
+          </div>
+          <div className='text'>
+            <h4>{companyInfo.name}</h4>
+            <p>Bem Vindo</p>
+          </div>
         </>
       }
     </Container>

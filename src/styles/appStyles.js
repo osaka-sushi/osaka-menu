@@ -6,7 +6,7 @@ export const Layout = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 
     background: ${props => props.theme.primaryColor};
     color: ${props => props.theme.textColor}
