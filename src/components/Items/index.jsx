@@ -1,5 +1,5 @@
 import {Container} from './styles'
-import qs from 'qs'
+// import qs from 'qs'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useLocation } from '../../context/Location'
