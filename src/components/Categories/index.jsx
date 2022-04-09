@@ -1,20 +1,22 @@
 import axios from "axios"
 import { useEffect, useState } from "react"
+import { useLocation } from "../../context/Location"
 import { Container } from "./styles"
 
 export default function Categories({setCurrentCategory, currentCategory}){
 
     const [categories, setCategories] = useState([])
+  const {currentLocation} = useLocation()
 
     // fetch categories
     useEffect(() => {
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-jales-categories`)
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-categories`)
         .then(({data}) => {
         setCategories(data.data)
         setCurrentCategory(data.data[0].attributes.title)
         })
         // eslint-disable-next-line
-    }, [])
+    }, [currentLocation])
 
     return(
         <Container>
