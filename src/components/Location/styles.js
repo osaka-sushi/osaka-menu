@@ -33,6 +33,8 @@ export const Container = styled.div`
 
         gap: 0.3rem;
 
+        cursor: pointer;
+
         h2{
             span{
                 display: block;
