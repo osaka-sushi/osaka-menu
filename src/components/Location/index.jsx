@@ -28,7 +28,9 @@ export default function Location(){
 
     return(
         <>
-            <Loader position="absolute" loading={loading}/>
+            {
+                loading && <Loader loading={loading} position="inherit"/>
+            }
             {
                 (companyInfo && !currentLocation && !loading) &&
                 <Container>
