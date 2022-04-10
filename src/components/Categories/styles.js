@@ -2,11 +2,11 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
 
-    margin: 2rem auto;
+    margin-top: 2rem;
 
     width: 100%;
     max-width: 720px;
-    height: 200px;
+    height: 130px;
 
     display: flex;
 
