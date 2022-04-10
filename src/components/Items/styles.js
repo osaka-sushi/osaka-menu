@@ -17,6 +17,15 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 1rem;
 
+    @media (max-width: 425px) {
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
     div{
 
         display: flex;
