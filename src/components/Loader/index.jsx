@@ -5,7 +5,7 @@ export default function Loader({position, loading}){
 
     return(
         <LoadingContainer position={position}>
-            <ClipLoader color={"#fff"} loading={loading} size={150} css={spinnerOverride}/>
+            <ClipLoader color={"#fff"} loading={loading} size={50} css={spinnerOverride}/>
         </LoadingContainer>
     )
 }

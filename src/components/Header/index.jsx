@@ -1,26 +1,37 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useLocation } from '../../context/Location'
+import Loader from '../Loader'
 import {Container} from './styles'
 
 export default function Header(){
   
   const [companyInfo, setCompanyInfo] = useState([])
   const {currentLocation} = useLocation()
+  const [loading, setLoading] = useState(false)
 
   // fetch company info
   useEffect(() => {
+
+    setLoading(true)
+
     axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-infos`)
-    .then(({data}) => (
+    .then(({data}) => {
       setCompanyInfo(data.data[0].attributes)
-    ))
+      setLoading(false)
+    })
     // eslint-disable-next-line
   }, [])
 
   return(
+    
       <Container>
       {
-        companyInfo &&
+        loading && <Loader loading={loading} position="inherit"/>
+      }
+
+      {
+        (companyInfo && !loading) &&
         <>
           <div className='image'>
             <img src={companyInfo.logo_url} alt="logo"/>

@@ -24,11 +24,10 @@ export default function Categories({setCurrentCategory, currentCategory}){
 
     return(
         <>
+            <Container>
             {
                 loading && <Loader loading={loading} position="inherit"/>
             } 
-
-            <Container>
             {
                 (categories && !loading) && 
                 categories.map(({attributes}, index) => (
