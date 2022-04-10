@@ -3,12 +3,13 @@ import {Container} from './styles'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useLocation } from '../../context/Location'
+import Loader from '../Loader'
 
 export default function Items({currentCategory}){
   
   const [items, setItems] = useState([])
-
   const {currentLocation} = useLocation()
+  const [loading, setLoading] = useState(false)
 
   // fetch current category items
   useEffect(() => {
@@ -25,10 +26,14 @@ export default function Items({currentCategory}){
       //   }
       // })
 
+      setLoading(true)
+
       const query = `filters[osaka_${currentLocation}_category][title][$eq]=${currentCategory}`
 
       let {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-items?${query}`)
       setItems(data.data)
+
+      setLoading(false)
     }
 
     currentCategory && fetchItems()
@@ -39,7 +44,10 @@ export default function Items({currentCategory}){
   return(
       <Container>
       {
-        items &&
+        loading && <Loader loading={loading} position="inherit"/>
+      }
+      {
+        (items && !loading) &&
         items.map(({attributes}, index) => (
           <div key={index}>
             <div className='image'>
