@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from '../../context/Location'
 import Card from './Card'
 import {Container} from './styles'
+import Loader from '../Loader'
 
 export default function Location(){
     
@@ -10,19 +11,26 @@ export default function Location(){
 
     const [companyInfo, setCompanyInfo] = useState([])
 
+    const [loading, setLoading] = useState(false)
+
     // fetch company info
     useEffect(() => {
+
+        setLoading(true)
+
         axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-jales-infos`)
-        .then(({data}) => (
-        setCompanyInfo(data.data[0].attributes)
-        ))
+        .then(({data}) => {
+            setCompanyInfo(data.data[0].attributes)
+            setLoading(false)
+        })
         // eslint-disable-next-line
     }, [])
 
     return(
         <>
+            <Loader position="absolute" loading={loading}/>
             {
-                (companyInfo && !currentLocation) &&
+                (companyInfo && !currentLocation && !loading) &&
                 <Container>
                     <h1>Onde você está?</h1>
 
