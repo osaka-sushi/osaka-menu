@@ -20,6 +20,27 @@ const GlobalStyle = createGlobalStyle`
         color: inherit;
     }
 
+    /* width */
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background: #FF003D;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #990024;
+    }
+
 `
 
 export default GlobalStyle;

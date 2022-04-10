@@ -6,21 +6,31 @@ export const Container = styled.div`
 
     width: 100%;
     max-width: 720px;
+    height: 200px;
+
     display: flex;
 
     gap: 0.5rem;
 
     padding: 0 1rem;
 
-    overflow-x: auto;
-    -ms-overflow-style: none; 
-    scrollbar-width: none;
+    align-items: center;
 
-    &::-webkit-scrollbar {
-        display: none;
+    overflow-x: scroll;
+
+
+    @media (max-width: 425px) {
+        -ms-overflow-style: none; 
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     h1{
+        min-width: 120px;
+        
         cursor: pointer;
 
         transition: color 0.2s ease-in-out;
@@ -28,6 +38,8 @@ export const Container = styled.div`
         font-weight: lighter;
 
         font-size: 1rem;
+
+        text-align: center;
 
         &:hover{
             color: ${props => props.theme.secondaryColor};
