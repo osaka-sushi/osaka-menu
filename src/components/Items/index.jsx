@@ -10,6 +10,7 @@ export default function Items({currentCategory}){
   const [items, setItems] = useState([])
   const {currentLocation} = useLocation()
   const [loading, setLoading] = useState(false)
+  const [companyInfo, setCompanyInfo] = useState([])
 
   // fetch current category items
   useEffect(() => {
@@ -41,6 +42,19 @@ export default function Items({currentCategory}){
     // eslint-disable-next-line
   }, [currentCategory])
 
+  // fetch company info
+  useEffect(() => {
+
+    setLoading(true)
+
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-infos`)
+    .then(({data}) => {
+      setCompanyInfo(data.data[0].attributes)
+      setLoading(false)
+    })
+    // eslint-disable-next-line
+  }, [])
+
   return(
       <Container>
       {
@@ -51,7 +65,9 @@ export default function Items({currentCategory}){
         items.map(({attributes}, index) => (
           <div key={index}>
             <div className='image'>
-              <img src={attributes.image_url} alt={"imagem de " + attributes.title}/>
+              <img 
+              src={attributes.image_url ? attributes.image_url : companyInfo.logo_url} 
+              alt={"imagem de " + attributes.title}/>
             </div>
 
             <div className='text'>

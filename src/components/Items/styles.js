@@ -35,8 +35,8 @@ export const Container = styled.div`
 
             background: ${props => props.theme.secondaryColor};
             clip-path: circle();
-            height: 104px;
-            width: 104px;
+            height: 100px;
+            width: 100px;
 
             display: flex;
             justify-content: center;
