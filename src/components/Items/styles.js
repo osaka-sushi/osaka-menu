@@ -35,15 +35,15 @@ export const Container = styled.div`
 
             background: ${props => props.theme.secondaryColor};
             clip-path: circle();
-            height: 100px;
-            width: 100px;
+            height: 90px;
+            width: 90px;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
             img{
-                height: 100px;
+                height: 93px;
                 clip-path: circle();
             }
         }
