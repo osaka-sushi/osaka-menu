@@ -54,7 +54,7 @@ export const Container = styled.div`
 
     .selected{
         position: relative;
-
+        font-weight: normal;
         ::after{
             content: '';
             background: ${props => props.theme.secondaryColor};

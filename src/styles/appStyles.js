@@ -9,6 +9,6 @@ export const Layout = styled.div`
     justify-content: flex-start;
 
     background: ${props => props.theme.primaryColor};
-    color: ${props => props.theme.textColor}
+    color: ${props => props.theme.textColor};
 
 `
