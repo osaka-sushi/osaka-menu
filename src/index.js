@@ -5,7 +5,7 @@ import App from './App';
 import { LocationContextProvider } from './context/Location';
 import GlobalStyle from './styles/GlobalStyles';
 import {defaultTheme} from './styles/theme'
-import copyCollectionItems from './util/copyCollectionItems';
+// import copyCollectionItems from './util/copyCollectionItems';
 
 // copyCollectionItems('osaka-stafe-items', 'osaka-jales-items', osaka-jales-items)
 
