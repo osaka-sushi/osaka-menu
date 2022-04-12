@@ -18,6 +18,10 @@ export const Container = styled.div`
 
     overflow-x: scroll;
 
+    /* width */
+    &::-webkit-scrollbar {
+        height: 8px;
+    }
 
     @media (max-width: 425px) {
         -ms-overflow-style: none; 
