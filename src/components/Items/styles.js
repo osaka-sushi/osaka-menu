@@ -26,74 +26,76 @@ export const Container = styled.div`
         }
     }
 
-    div{
+`
+
+export const ItemCard = styled.div`
+    display: flex;
+    gap: 0.5rem;
+
+    .image{
+
+        background: ${props => props.theme.secondaryColor};
+        clip-path: circle();
+        height: 96px;
+        width: 96px;
 
         display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img{
+            height: ${props => props.image ? '93px' : '99px'};
+            clip-path: circle();
+        }
+    }
+
+    .text{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         gap: 0.5rem;
 
-        .image{
+        h4{
+            font-size: 1rem;
+            position: relative;
 
-            background: ${props => props.theme.secondaryColor};
-            clip-path: circle();
-            height: 90px;
-            width: 90px;
+            &::after{
+                content: '';
+                width: 100%;
+                height: 1px;
 
-            display: flex;
-            justify-content: center;
-            align-items: center;
+                position: absolute;
+                left: 0;
+                bottom: -2px;
 
-            img{
-                height: 93px;
-                clip-path: circle();
+                background: ${props => props.theme.secondaryColor};
             }
         }
 
-        .text{
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        p{
+            font-weight: lighter;
+            width: 100%;
+            max-width: 500px;
+            font-size: 0.9rem;
+        }
+        
+        h5{
+            position: relative;
+            padding-left: 5px;
 
-            h4{
-                font-size: 1rem;
-                position: relative;
+            font-size: 1rem;
 
-                &::after{
-                    content: '';
-                    width: 100%;
-                    height: 1px;
+            ::before{
+                content: '';
+                width: 1px;
+                height: 100%;
+                background: #fff;
 
-                    position: absolute;
-                    left: 0;
-                    bottom: -2px;
-
-                    background: ${props => props.theme.secondaryColor};
-                }
-            }
-
-            p{
-                font-weight: lighter;
-                width: 100%;
-                max-width: 500px;
-                font-size: 0.8rem;
-            }
-            
-            h5{
-                position: relative;
-                padding-left: 5px;
-
-                font-size: 1rem;
-
-                ::before{
-                    content: '';
-                    width: 1px;
-                    height: 100%;
-                    background: #fff;
-
-                    position: absolute;
-                    left: 0;
-                    top: 0;
-                }
+                position: absolute;
+                left: 0;
+                top: 0;
             }
         }
     }
+
 `

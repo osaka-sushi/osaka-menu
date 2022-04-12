@@ -1,4 +1,4 @@
-import {Container} from './styles'
+import {Container, ItemCard} from './styles'
 // import qs from 'qs'
 import { useEffect, useState } from 'react'
 import axios from 'axios'
@@ -62,7 +62,7 @@ export default function Items({currentCategory}){
       {
         (items && !loading) &&
         items.map(({attributes}, index) => (
-          <div key={index}>
+          <ItemCard key={index} image={attributes.img_url ? true : false}>
             <div className='image'>
               <img 
               src={attributes.img_url ? attributes.img_url : companyInfo.logo_url} 
@@ -78,7 +78,7 @@ export default function Items({currentCategory}){
               </h5>
               
             </div>
-          </div>
+          </ItemCard>
         ))
 
 
