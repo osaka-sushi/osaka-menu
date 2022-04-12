@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <Layout>
+      <Layout innetHeight={window.innerHeight}>
         <Location/>
         
         {

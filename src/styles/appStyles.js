@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Layout = styled.div`
-    height: 100vh;
+    height: ${() => window.innerHeight}px;
     padding-top: 1rem;
 
     display: flex;
