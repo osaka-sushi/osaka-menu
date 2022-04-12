@@ -33,7 +33,6 @@ export default function Items({currentCategory}){
 
       let {data} = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-items?${query}`)
       setItems(data.data)
-
       setLoading(false)
     }
 
@@ -66,10 +65,9 @@ export default function Items({currentCategory}){
           <div key={index}>
             <div className='image'>
               <img 
-              src={attributes.image_url ? attributes.image_url : companyInfo.logo_url} 
+              src={attributes.img_url ? attributes.img_url : companyInfo.logo_url} 
               alt={"imagem de " + attributes.title}/>
             </div>
-
             <div className='text'>
               <h4>{attributes.title}</h4>
               <p>{attributes.description}</p>
