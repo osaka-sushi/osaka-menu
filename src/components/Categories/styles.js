@@ -31,7 +31,7 @@ export const Container = styled.div`
     }
 
     h1{
-        min-width: 120px;
+        min-width: 150px;
         
         cursor: pointer;
 
