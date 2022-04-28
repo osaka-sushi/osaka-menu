@@ -23,7 +23,7 @@ export const Container = styled.div`
         height: 8px;
     }
 
-    @media (max-width: 425px) {
+    @media screen and (max-width: 425px) {
         -ms-overflow-style: none; 
         scrollbar-width: none;
 
