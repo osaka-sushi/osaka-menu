@@ -72,9 +72,12 @@ export default function Items({currentCategory}){
               <h4>{attributes.title}</h4>
               <p>{attributes.description}</p>
               <h5>
-                {new Intl.NumberFormat('pt-BR', 
-                { style: 'currency', currency: 'BRL' })
-                .format(attributes.price)}
+                {
+                  attributes.price &&
+                  new Intl.NumberFormat('pt-BR', 
+                  { style: 'currency', currency: 'BRL' })
+                  .format(attributes.price)
+                }
               </h5>
               
             </div>
