@@ -13,30 +13,43 @@ export const Container = styled.div`
     display: flex;
     gap: 0.5rem;
 
-    .image{
-        height: 60px;
-        width: 60px;
+    justify-content: space-between;
 
-        background: ${props => props.theme.secondaryColor};
-        clip-path: circle();
-
+    .icon{
+        font-size: 1.8rem;
+        height: 100%;
         display: flex;
         align-items: center;
-        justify-content: center;
 
-        img{
-            height: 60px;
-            clip-path: circle();
-        }
+        color: ${props => props.theme.secondaryColor};
     }
 
-    .text{
+    .info{
         display: flex;
         justify-content: center;
-        flex-direction: column;
+        align-items: center;
+
+        gap: 0.5rem;
 
         p{
             font-weight: lighter;
+        }
+        
+        .image{
+            height: 60px;
+            width: 60px;
+
+            background: ${props => props.theme.secondaryColor};
+            clip-path: circle();
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img{
+                height: 60px;
+                clip-path: circle();
+            }
         }
     }
 `
