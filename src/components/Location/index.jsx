@@ -33,7 +33,7 @@ export default function Location(){
             }
             {
                 (companyInfo && !currentLocation && !loading) &&
-                <Container>
+                <Container innetHeight={window.innerHeight}>
                     <h1>Onde você está?</h1>
 
                     <Card 
