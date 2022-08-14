@@ -9,6 +9,10 @@ function CompanyInfoModal({companyInfo, setIsMenuOpen, isMenuOpen}) {
 
   function phoneMask(number){
 
+    if(!companyInfo?.phone){
+      return
+    }
+
     if(number.length < 11){
       return "Telefone Incompleto"
     }
@@ -24,25 +28,28 @@ function CompanyInfoModal({companyInfo, setIsMenuOpen, isMenuOpen}) {
         <IoClose/>
       </span>
       <div>
-        <h6>{companyInfo.name}</h6>
+        <h6>{companyInfo?.name}</h6>
       </div>
 
       <div>
         <h6>Endereço</h6>
-        <p>{companyInfo.address}</p>
+        <p>{companyInfo?.address}</p>
       </div>
 
       <div>
         <h6>Telefone</h6>
-        <p>{phoneMask(companyInfo.phone)}</p>
+        <p>{phoneMask(companyInfo?.phone ?? "00000000000")}</p>
       </div>
 
       <div>
         <h6>Horários</h6>
-        {companyInfo.hours
-        .replaceAll("\t", ": ")
-        .split("\n")
-        .map((hour, index) => <div key={index}>{capitalize(hour)}</div>)}
+        {
+          companyInfo?.hours &&
+          companyInfo.hours
+          .replaceAll("\t", ": ")
+          .split("\n")
+          .map((hour, index) => <div key={index}>{capitalize(hour)}</div>)
+        }
       </div>
 
       <div>
