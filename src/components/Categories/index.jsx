@@ -16,7 +16,7 @@ export default function Categories({setCurrentCategory, currentCategory}){
         axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-categories`)
         .then(({data}) => {
             setCategories(data.data)
-            setCurrentCategory(data.data[0].attributes.title)
+            setCurrentCategory(data.data[0]?.attributes?.title)
             setLoading(false)
         })
         // eslint-disable-next-line
