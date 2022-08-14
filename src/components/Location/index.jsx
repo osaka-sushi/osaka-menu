@@ -20,7 +20,7 @@ export default function Location(){
 
         axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-jales-infos`)
         .then(({data}) => {
-            setCompanyInfo(data.data[0].attributes)
+            setCompanyInfo(data.data[0]?.attributes)
             setLoading(false)
         })
         // eslint-disable-next-line

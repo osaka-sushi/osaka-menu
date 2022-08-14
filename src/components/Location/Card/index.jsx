@@ -17,7 +17,7 @@ export default function Card({
     return(
         <>
             <div className="location" onClick={() => handleSetLocation(locationAlias)}>
-                <img src={companyInfo.logo_url} alt="logo" />
+                <img src={companyInfo.logo_url} alt="logo" height="100px" width="100px"/>
                 <h2>
                     {title}
                     <span> {city}</span>
