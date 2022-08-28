@@ -15,7 +15,8 @@ export default function Categories({ setCurrentCategory, currentCategory }) {
         setLoading(true)
         axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-categories`)
             .then(({ data }) => {
-                setCategories(data.data.sort((a, b) => a.id - b.id))
+                console.log(data.data)
+                setCategories(data.data.sort((a, b) => a.order - b.order))
                 setCurrentCategory(data.data[0]?.attributes?.title)
                 setLoading(false)
             })

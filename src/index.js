@@ -4,11 +4,14 @@ import { ThemeProvider } from 'styled-components';
 import App from './App';
 import { LocationContextProvider } from './context/Location';
 import GlobalStyle from './styles/GlobalStyles';
-import {defaultTheme} from './styles/theme'
+import { defaultTheme } from './styles/theme'
+import copyCollectionItems from './util/copyCollectionItems'
+
+//copyCollectionItems('osaka-jales-categories', 'osaka-stafe-categories')
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle/>
+    <GlobalStyle />
     <ThemeProvider theme={defaultTheme}>
       <LocationContextProvider>
         <App />

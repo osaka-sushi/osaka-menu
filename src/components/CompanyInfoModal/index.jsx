@@ -1,19 +1,19 @@
 import { Container } from './styles';
-import {IoClose} from 'react-icons/io5'
+import { IoClose } from 'react-icons/io5'
 
-function CompanyInfoModal({companyInfo, setIsMenuOpen, isMenuOpen}) {
+function CompanyInfoModal({ companyInfo, setIsMenuOpen, isMenuOpen }) {
 
   function capitalize(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
-  function phoneMask(number){
+  function phoneMask(number) {
 
-    if(!companyInfo?.phone){
+    if (!companyInfo?.phone) {
       return
     }
 
-    if(number.length < 11){
+    if (number.length < 11) {
       return "Telefone Incompleto"
     }
 
@@ -25,7 +25,7 @@ function CompanyInfoModal({companyInfo, setIsMenuOpen, isMenuOpen}) {
     companyInfo.name &&
     <Container isMenuOpen={isMenuOpen}>
       <span onClick={() => setIsMenuOpen(false)}>
-        <IoClose/>
+        <IoClose />
       </span>
       <div>
         <h6>{companyInfo?.name}</h6>
@@ -46,9 +46,9 @@ function CompanyInfoModal({companyInfo, setIsMenuOpen, isMenuOpen}) {
         {
           companyInfo?.hours &&
           companyInfo.hours
-          .replaceAll("\t", ": ")
-          .split("\n")
-          .map((hour, index) => <div key={index}>{capitalize(hour)}</div>)
+            .replaceAll("\t")
+            .split("\n")
+            .map((hour, index) => <div key={index}>{capitalize(hour)}</div>)
         }
       </div>
 
