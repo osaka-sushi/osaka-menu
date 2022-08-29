@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { useLocation } from "../../context/Location"
 import Loader from "../Loader"
 import { Container } from "./styles"
+import api from "../../services/api"
 
 export default function Categories({ setCurrentCategory, currentCategory }) {
 
@@ -14,7 +15,7 @@ export default function Categories({ setCurrentCategory, currentCategory }) {
     async function fetchCategories() {
         setLoading(true)
 
-        const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-categories`)
+        const { data } = await api.get(`osaka-${currentLocation}-categories`)
         const dataSorted = await data.data.sort((a, b) => a.order - b.order)
 
         const sanitized = await dataSorted.map(data => (
