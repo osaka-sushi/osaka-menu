@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom"
 
-export function RestaurantMenu() {
+export function Menu() {
 
     const [searchParams] = useSearchParams()
 
