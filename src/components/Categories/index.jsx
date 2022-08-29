@@ -10,16 +10,30 @@ export default function Categories({ setCurrentCategory, currentCategory }) {
     const [loading, setLoading] = useState(false)
     const { currentLocation } = useLocation()
 
+
+    async function fetchCategories() {
+        setLoading(true)
+
+        const { data } = await axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-categories`)
+        const dataSorted = await data.data.sort((a, b) => a.order - b.order)
+
+        const sanitized = await dataSorted.map(data => (
+            {
+                id: data.id,
+                order: data.attributes.order,
+                title: data.attributes.title,
+            }
+        ))
+
+        setCategories(sanitized)
+        setCurrentCategory(sanitized[0].title)
+
+        setLoading(false)
+    }
+
     // fetch categories
     useEffect(() => {
-        setLoading(true)
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/api/osaka-${currentLocation}-categories`)
-            .then(({ data }) => {
-                console.log(data.data)
-                setCategories(data.data.sort((a, b) => a.order - b.order))
-                setCurrentCategory(data.data[0]?.attributes?.title)
-                setLoading(false)
-            })
+        fetchCategories()
         // eslint-disable-next-line
     }, [currentLocation])
 
@@ -31,12 +45,12 @@ export default function Categories({ setCurrentCategory, currentCategory }) {
                 }
                 {
                     (categories && !loading) &&
-                    categories.map(({ attributes }, index) => (
+                    categories.map(({ title }, index) => (
                         <h1 key={index}
-                            className={currentCategory === attributes.title ? "selected" : ""}
-                            onClick={() => setCurrentCategory(attributes.title)}
+                            className={currentCategory === title ? "selected" : ""}
+                            onClick={() => setCurrentCategory(title)}
                         >
-                            {attributes.title}
+                            {title}
                         </h1>
                     ))
                 }
