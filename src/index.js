@@ -1,3 +1,4 @@
+import { ChakraProvider } from '@chakra-ui/react';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -6,25 +7,24 @@ import App from './App';
 import { RestaurantContextProvider } from './context/Restaurant';
 import { Menu } from './pages/Menu';
 import GlobalStyle from './styles/GlobalStyles';
-import { defaultTheme } from './styles/theme'
-import copyCollectionItems from './util/copyCollectionItems'
+import theme from './styles/theme'
 
+//import copyCollectionItems from './util/copyCollectionItems'
 //copyCollectionItems('osaka-jales-categories', 'osaka-stafe-categories')
 
 ReactDOM.render(
   <React.StrictMode>
     <GlobalStyle />
-    <ThemeProvider theme={defaultTheme}>
+    <ChakraProvider resetCSS theme={theme}>
       <RestaurantContextProvider>
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<App />} />
             <Route path="/menu/:location" element={<Menu />} />
           </Routes>
-        </BrowserRouter>,
+        </BrowserRouter>
       </RestaurantContextProvider>
-    </ThemeProvider>
-
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

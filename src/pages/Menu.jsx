@@ -4,9 +4,9 @@ export function Menu() {
 
     const [searchParams] = useSearchParams()
 
-    const name = searchParams.get('name')
+    const location = searchParams.get('location')
 
     return (
-        <h1>{name}</h1>
+        <h1>{location}</h1>
     )
 }
