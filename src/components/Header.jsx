@@ -29,7 +29,7 @@ export function Header({ categories }) {
 
   useEffect(() => {
     getCurrentProfile()
-  }, [restaurantProfiles, swiperIcategory, swiperIitems])
+  }, [restaurantProfiles])
 
   return (
     <>

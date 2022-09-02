@@ -5,14 +5,19 @@ import { maskPrice } from "../util/maskPrice";
 
 export function Items({ items, categories }) {
 
-    const { setSwiperIitems } = useSwiperContext()
+    const { setSwiperIitems, swiperIcategory, swiperIitems } = useSwiperContext()
+
+    function handleSlide(itemsIndex) {
+        swiperIcategory.slideTo(itemsIndex)
+        swiperIitems.slideTo(itemsIndex)
+    }
 
     return (
         <Flex h="0px" flex="8" w="100vw" maxW="600px" color="white">
             <Swiper
                 onInit={swiper => setSwiperIitems(swiper)}
                 slidesPerView={1}
-                onSlideChange={swiper => { }}
+                onSlideChange={swiper => handleSlide(swiper?.activeIndex ?? 0)}
             >
                 {
                     categories.map(category => (
