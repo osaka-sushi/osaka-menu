@@ -5,11 +5,12 @@ import { useParams } from 'react-router-dom'
 import { Swiper, SwiperSlide, useSwiperSlide } from 'swiper/react'
 import { useRestaurant } from '../context/Restaurant'
 
-export function Header({ categories }) {
+export function Header({ categories, setCurrentCategoryIndex, currentCategoryIndex }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { restaurantProfiles } = useRestaurant()
   const [currentProfile, setCurrentProfile] = useState()
   const { location } = useParams()
+  const [activeIndex, setActiveIndex] = useState()
 
   function getCurrentProfile() {
     restaurantProfiles.map(profile => {
@@ -26,12 +27,12 @@ export function Header({ categories }) {
 
   return (
     <>
-      <Flex align="center" gap={2} w="100%" maxW="600px" color="white">
+      <Flex align="center" gap={2} w="100%" maxW="600px" color="white" py={5}>
         <Box>
           <Img
             h="50px"
             w="50px"
-            src={currentProfile.logoUrl}
+            src={currentProfile?.logoUrl}
             border="1px"
             borderColor="primary"
             rounded="full"
@@ -46,6 +47,7 @@ export function Header({ categories }) {
         <Swiper
           slidesPerView={3}
           spaceBetween={5}
+          onInit={swiper => setActiveIndex(swiper.activeIndex)}
         >
           <SwiperSlide />
           {
@@ -53,15 +55,13 @@ export function Header({ categories }) {
             categories.map(category => (
               <SwiperSlide key={category.title}>
                 {
-                  ({ isNext }) => (
-                    <Flex
-                      h="100%"
-                      align="center"
-                      justify="center"
-                      color={isNext && 'red'}
-                      cursor="pointer"
-                    >{category.title}</Flex>
-                  )
+                  <Flex
+                    h="100%"
+                    align="center"
+                    justify="center"
+                    color={currentCategoryIndex == activeIndex + 1 && 'red'}
+                    cursor="pointer"
+                  >{category.title}</Flex>
                 }
               </SwiperSlide>
             ))

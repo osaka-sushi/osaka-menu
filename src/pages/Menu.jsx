@@ -13,7 +13,7 @@ export function Menu() {
     const [windowHeight, setWindowHeight] = useState()
     const [currentCategoryIndex, setCurrentCategoryIndex] = useState(1)
 
-    const { fetchRestaurantMenu, loading, restaurantProfiles } = useRestaurant()
+    const { fetchRestaurantMenu, loading } = useRestaurant()
 
     async function fetchRestaurantData() {
         const data = await fetchRestaurantMenu(location)
@@ -33,8 +33,16 @@ export function Menu() {
             {
                 restaurantData &&
                 <>
-                    <Header categories={restaurantData.categories} />
-                    <Items items={restaurantData.items} categories={restaurantData.categories} />
+                    <Header
+                        categories={restaurantData.categories}
+                        setCurrentCategoryIndex={setCurrentCategoryIndex}
+                        currentCategoryIndex={currentCategoryIndex}
+                    />
+
+                    <Items
+                        items={restaurantData.items}
+                        categories={restaurantData.categories}
+                        setCurrentCategoryIndex={setCurrentCategoryIndex} />
                 </>
             }
         </Flex>

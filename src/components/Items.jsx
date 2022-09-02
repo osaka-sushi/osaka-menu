@@ -2,11 +2,14 @@ import { Box, Flex, Image, Img, Text } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { maskPrice } from "../util/maskPrice";
 
-export function Items({ items, categories }) {
+export function Items({ items, categories, setCurrentCategoryIndex }) {
 
     return (
         <Flex h="0px" flex="8" w="100vw" maxW="600px" color="white">
-            <Swiper slidesPerView={1}>
+            <Swiper
+                slidesPerView={1}
+                onSlideChange={swiper => setCurrentCategoryIndex(swiper.activeIndex)}
+            >
                 {
                     categories.map(category => (
                         <SwiperSlide
