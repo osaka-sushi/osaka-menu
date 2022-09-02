@@ -11,6 +11,7 @@ export function Header({ categories, setCurrentCategoryIndex, currentCategoryInd
   const [currentProfile, setCurrentProfile] = useState()
   const { location } = useParams()
   const [activeIndex, setActiveIndex] = useState()
+  const [swiperI, setSwiperI] = useState()
 
   function getCurrentProfile() {
     restaurantProfiles.map(profile => {
@@ -47,21 +48,24 @@ export function Header({ categories, setCurrentCategoryIndex, currentCategoryInd
         <Swiper
           slidesPerView={3}
           spaceBetween={5}
-          onInit={swiper => setActiveIndex(swiper.activeIndex)}
+          onInit={swiper => setSwiperI(swiper)}
         >
           <SwiperSlide />
           {
             categories &&
-            categories.map(category => (
+            categories.map((category, index) => (
               <SwiperSlide key={category.title}>
                 {
-                  <Flex
-                    h="100%"
-                    align="center"
-                    justify="center"
-                    color={currentCategoryIndex == activeIndex + 1 && 'red'}
-                    cursor="pointer"
-                  >{category.title}</Flex>
+                  ({ isNext }) => (
+                    <Flex
+                      h="100%"
+                      align="center"
+                      justify="center"
+                      color={isNext && 'primary'}
+                      cursor="pointer"
+                      onClick={() => swiperI.slideTo(index)}
+                    >{category.title}</Flex>
+                  )
                 }
               </SwiperSlide>
             ))
