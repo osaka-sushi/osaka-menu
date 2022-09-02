@@ -2,16 +2,16 @@ import { Box, Flex, Img, Text } from '@chakra-ui/react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Swiper, SwiperSlide, useSwiperSlide } from 'swiper/react'
+import { Swiper, SwiperSlide } from 'swiper/react'
 import { useRestaurant } from '../context/Restaurant'
+import { useSwiperContext } from '../context/Swiper'
 
-export function Header({ categories, setCurrentCategoryIndex, currentCategoryIndex }) {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+export function Header({ categories }) {
   const { restaurantProfiles } = useRestaurant()
   const [currentProfile, setCurrentProfile] = useState()
   const { location } = useParams()
-  const [activeIndex, setActiveIndex] = useState()
   const [swiperI, setSwiperI] = useState()
+  const { setSwiperIcategory, swiperIitems, swiperIcategory } = useSwiperContext()
 
   function getCurrentProfile() {
     restaurantProfiles.map(profile => {
@@ -22,9 +22,14 @@ export function Header({ categories, setCurrentCategoryIndex, currentCategoryInd
     })
   }
 
+  function handleSlide(categoryIndex) {
+    swiperIcategory.slideTo(categoryIndex)
+    swiperIitems.slideTo(categoryIndex)
+  }
+
   useEffect(() => {
     getCurrentProfile()
-  }, [restaurantProfiles])
+  }, [restaurantProfiles, swiperIcategory, swiperIitems])
 
   return (
     <>
@@ -48,7 +53,7 @@ export function Header({ categories, setCurrentCategoryIndex, currentCategoryInd
         <Swiper
           slidesPerView={3}
           spaceBetween={5}
-          onInit={swiper => setSwiperI(swiper)}
+          onInit={swiper => setSwiperIcategory(swiper)}
         >
           <SwiperSlide />
           {
@@ -63,7 +68,7 @@ export function Header({ categories, setCurrentCategoryIndex, currentCategoryInd
                       justify="center"
                       color={isNext && 'primary'}
                       cursor="pointer"
-                      onClick={() => swiperI.slideTo(index)}
+                      onClick={() => handleSlide(index)}
                     >{category.title}</Flex>
                   )
                 }
