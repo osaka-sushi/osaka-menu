@@ -20,6 +20,7 @@ export function RestaurantContextProvider(props) {
                 logoUrl: array.data[0].attributes.logo_url,
                 hours: array.data[0].attributes.hours,
                 address: array.data[0].attributes.address,
+                locationAlias: array.data[0].attributes.location_alias,
             }
         )
     }

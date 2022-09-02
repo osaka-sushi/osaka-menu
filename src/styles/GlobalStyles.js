@@ -22,6 +22,7 @@ const GlobalStyle = createGlobalStyle`
 
     /* width */
     ::-webkit-scrollbar {
+        display:none;
         width: 10px;
     }
 

@@ -8,6 +8,7 @@ import { Menu } from './pages/Menu';
 import GlobalStyle from './styles/GlobalStyles';
 import theme from './styles/theme'
 import 'swiper/css';
+import { SwiperContextProvider } from './context/Swiper';
 
 //import copyCollectionItems from './util/copyCollectionItems'
 //copyCollectionItems('osaka-jales-categories', 'osaka-stafe-categories')
@@ -18,12 +19,14 @@ ReactDOM.render(
     <GlobalStyle />
     <ChakraProvider resetCSS theme={theme}>
       <RestaurantContextProvider>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<App />} />
-            <Route path="menu/:location" element={<Menu />} />
-          </Routes>
-        </BrowserRouter>
+        <SwiperContextProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<App />} />
+              <Route path="menu/:location" element={<Menu />} />
+            </Routes>
+          </BrowserRouter>
+        </SwiperContextProvider>
       </RestaurantContextProvider>
     </ChakraProvider>
   </React.StrictMode>,
