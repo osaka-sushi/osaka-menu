@@ -69,12 +69,15 @@ export function Header({ categories }) {
                       color={isNext && 'primary'}
                       cursor="pointer"
                       onClick={() => handleSlide(index)}
+                      px={5}
+                      textAlign="center"
                     >{category.title}</Flex>
                   )
                 }
               </SwiperSlide>
             ))
           }
+          <SwiperSlide />
         </Swiper>
       </Flex>
     </>

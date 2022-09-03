@@ -34,7 +34,7 @@ export function Items({ items, categories }) {
                                         return (
                                             <Flex minH="100px" align="center" key={item.title} p={5} my={5} gap={5}>
 
-                                                <Box flex="1">
+                                                <Box>
                                                     <Image
                                                         h="80px"
                                                         w="80px"
