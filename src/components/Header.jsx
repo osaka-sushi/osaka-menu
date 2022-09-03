@@ -33,7 +33,7 @@ export function Header({ categories }) {
 
   return (
     <>
-      <Flex align="center" gap={2} w="100%" maxW="600px" color="white" py={5}>
+      <Flex align="center" gap={2} w="100%" maxW="600px" color="white" p={5}>
         <Box>
           <Img
             h="50px"
@@ -61,7 +61,7 @@ export function Header({ categories }) {
             categories.map((category, index) => (
               <SwiperSlide key={category.title}>
                 {
-                  ({ isNext }) => (
+                  ({ isNext, isActive, isPrev }) => (
                     <Flex
                       h="100%"
                       align="center"
@@ -71,6 +71,11 @@ export function Header({ categories }) {
                       onClick={() => handleSlide(index)}
                       px={5}
                       textAlign="center"
+                      fontSize={
+                        index == swiperIcategory?.activeIndex - 1 && "sm" ||
+                        index == swiperIcategory?.activeIndex + 1 && "sm" ||
+                        index == swiperIcategory?.activeIndex && "lg"
+                      }
                     >{category.title}</Flex>
                   )
                 }
