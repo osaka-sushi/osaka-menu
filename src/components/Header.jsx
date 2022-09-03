@@ -49,7 +49,18 @@ export function Header({ categories }) {
           <Text fontSize="sm" fontWeight="300">{currentProfile?.name}</Text>
         </Flex>
       </Flex>
-      <Flex w="100%" maxW="600px" overflowX="auto" color="white" flex="1">
+      <Flex w="100%" maxW="600px" overflowX="auto" color="white" flex="1" position="relative">
+        <Box
+          position="absolute"
+          w="100%"
+          h="100%"
+          left="0"
+          top="0"
+          bgGradient="linear-gradient(to-l, secondary, transparent, secondary);"
+          zIndex="10"
+          pointerEvents="none"
+        />
+
         <Swiper
           slidesPerView={3}
           spaceBetween={5}
