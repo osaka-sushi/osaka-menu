@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { useRestaurant } from '../context/Restaurant'
 import { useSwiperContext } from '../context/Swiper'
+import { CategoriesGradient } from './CategoriesGradient'
 
 export function Header({ categories }) {
   const { restaurantProfiles } = useRestaurant()
@@ -50,16 +51,8 @@ export function Header({ categories }) {
         </Flex>
       </Flex>
       <Flex w="100%" maxW="600px" overflowX="auto" color="white" flex="1" position="relative">
-        <Box
-          position="absolute"
-          w="100%"
-          h="100%"
-          left="0"
-          top="0"
-          bgGradient="linear-gradient(to-l, secondary, transparent, secondary);"
-          zIndex="10"
-          pointerEvents="none"
-        />
+
+        <CategoriesGradient />
 
         <Swiper
           slidesPerView={3}
