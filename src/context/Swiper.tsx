@@ -1,11 +1,20 @@
 import { createContext, useContext, useState } from "react";
+import Swiper from "swiper";
+import { SwiperProps } from "swiper/react";
 
-export const SwiperContext = createContext([])
+interface SwiperContextInterface {
+    swiperIcategory: Swiper;
+    setSwiperIcategory: (swiperI: Swiper) => void;
+    swiperIitems: Swiper
+    setSwiperIitems: (swiperI: Swiper) => void;
+}
+
+export const SwiperContext = createContext({} as SwiperContextInterface)
 
 export function SwiperContextProvider(props) {
 
-    const [swiperIcategory, setSwiperIcategory] = useState()
-    const [swiperIitems, setSwiperIitems] = useState()
+    const [swiperIcategory, setSwiperIcategory] = useState<Swiper>()
+    const [swiperIitems, setSwiperIitems] = useState<Swiper>()
 
     return (
         <SwiperContext.Provider

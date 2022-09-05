@@ -6,13 +6,14 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { useRestaurant } from '../context/Restaurant'
 import { useSwiperContext } from '../context/Swiper'
 import { CategoriesGradient } from './CategoriesGradient'
+import { CategoriesCarousel } from './CategoriesCarousel'
 
 export function Header({ categories }) {
   const { restaurantProfiles } = useRestaurant()
   const [currentProfile, setCurrentProfile] = useState()
   const { location } = useParams()
   const [swiperI, setSwiperI] = useState()
-  const { setSwiperIcategory, swiperIitems, swiperIcategory } = useSwiperContext()
+  const { swiperIitems, swiperIcategory } = useSwiperContext()
 
   function getCurrentProfile() {
     restaurantProfiles.map(profile => {
@@ -54,40 +55,7 @@ export function Header({ categories }) {
 
         <CategoriesGradient />
 
-        <Swiper
-          slidesPerView={3}
-          spaceBetween={5}
-          onInit={swiper => setSwiperIcategory(swiper)}
-        >
-          <SwiperSlide />
-          {
-            categories &&
-            categories.map((category, index) => (
-              <SwiperSlide key={category.title}>
-                {
-                  ({ isNext, isActive, isPrev }) => (
-                    <Flex
-                      h="100%"
-                      align="center"
-                      justify="center"
-                      color={isNext && 'primary'}
-                      cursor="pointer"
-                      onClick={() => handleSlide(index)}
-                      px={5}
-                      textAlign="center"
-                      fontSize={
-                        index == swiperIcategory?.activeIndex - 1 && "sm" ||
-                        index == swiperIcategory?.activeIndex + 1 && "sm" ||
-                        index == swiperIcategory?.activeIndex && "lg"
-                      }
-                    >{category.title}</Flex>
-                  )
-                }
-              </SwiperSlide>
-            ))
-          }
-          <SwiperSlide />
-        </Swiper>
+        <CategoriesCarousel categories={categories} />
       </Flex>
     </>
   )
