@@ -2,11 +2,21 @@ import { Flex } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useSwiperContext } from '../context/Swiper'
 
-export function CategoriesCarousel({ categories }) {
+interface CategoriesProps {
+    id: number;
+    order: number;
+    title: string;
+}
+
+interface CategoriesCarouselProps {
+    categories: CategoriesProps[];
+}
+
+export function CategoriesCarousel({ categories }: CategoriesCarouselProps) {
 
     const { setSwiperIcategory, swiperIitems, swiperIcategory } = useSwiperContext()
 
-    function handleSlide(categoryIndex) {
+    function handleSlide(categoryIndex: number) {
         swiperIcategory.slideTo(categoryIndex)
         swiperIitems.slideTo(categoryIndex)
     }
@@ -23,7 +33,7 @@ export function CategoriesCarousel({ categories }) {
                 categories.map((category, index) => (
                     <SwiperSlide key={category.title}>
                         {
-                            ({ isNext, isActive, isPrev }) => (
+                            ({ isNext }) => (
                                 <Flex
                                     h="100%"
                                     align="center"
@@ -34,11 +44,13 @@ export function CategoriesCarousel({ categories }) {
                                     px={5}
                                     textAlign="center"
                                     fontSize={
-                                        index == swiperIcategory?.activeIndex - 1 && "sm" ||
-                                        index == swiperIcategory?.activeIndex + 1 && "sm" ||
-                                        index == swiperIcategory?.activeIndex && "lg"
+                                        index === swiperIcategory?.activeIndex - 1 && "sm" ||
+                                        index === swiperIcategory?.activeIndex + 1 && "sm" ||
+                                        index === swiperIcategory?.activeIndex && "lg"
                                     }
-                                >{category.title}</Flex>
+                                >
+                                    {category.title}
+                                </Flex>
                             )
                         }
                     </SwiperSlide>

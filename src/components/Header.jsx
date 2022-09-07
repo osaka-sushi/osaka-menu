@@ -1,19 +1,19 @@
-import { Box, Flex, Img, Text } from '@chakra-ui/react'
+import { Box, Flex, Icon, Img, Text, useDisclosure } from '@chakra-ui/react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { useRestaurant } from '../context/Restaurant'
-import { useSwiperContext } from '../context/Swiper'
 import { CategoriesGradient } from './CategoriesGradient'
 import { CategoriesCarousel } from './CategoriesCarousel'
+import { RestaurantInfo } from './RestaurantInfo'
+import { Profile } from './Profile'
+import { FiMenu } from 'react-icons/fi'
 
 export function Header({ categories }) {
   const { restaurantProfiles } = useRestaurant()
   const [currentProfile, setCurrentProfile] = useState()
   const { location } = useParams()
-  const [swiperI, setSwiperI] = useState()
-  const { swiperIitems, swiperIcategory } = useSwiperContext()
+  const { isOpen: isInfoOpen, onOpen, onClose } = useDisclosure()
 
   function getCurrentProfile() {
     restaurantProfiles.map(profile => {
@@ -24,9 +24,9 @@ export function Header({ categories }) {
     })
   }
 
-  function handleSlide(categoryIndex) {
-    swiperIcategory.slideTo(categoryIndex)
-    swiperIitems.slideTo(categoryIndex)
+  function toggleInfo() {
+    !isInfoOpen && onOpen()
+    isInfoOpen && onClose()
   }
 
   useEffect(() => {
@@ -35,28 +35,30 @@ export function Header({ categories }) {
 
   return (
     <>
-      <Flex align="center" gap={2} w="100%" maxW="600px" color="white" p={5}>
-        <Box>
-          <Img
-            h="50px"
-            w="50px"
-            src={currentProfile?.logoUrl}
-            border="1px"
-            borderColor="primary"
-            rounded="full"
-          />
-        </Box>
-        <Flex direction="column">
-          <Text>Bem Vindo</Text>
-          <Text fontSize="sm" fontWeight="300">{currentProfile?.name}</Text>
+      <Flex align="center" w="100%" maxW="600px" color="white" p={5} justify="space-between">
+
+        <Profile currentProfile={currentProfile} />
+
+        <Icon as={FiMenu} color="primary" onClick={toggleInfo} fontSize="2xl" cursor="pointer" />
+      </Flex>
+
+      {
+        !isInfoOpen &&
+        <Flex w="100%" maxW="600px" overflowX="auto" color="white" flex="1" position="relative">
+
+          <CategoriesGradient />
+
+          <CategoriesCarousel categories={categories} />
         </Flex>
-      </Flex>
-      <Flex w="100%" maxW="600px" overflowX="auto" color="white" flex="1" position="relative">
+      }
 
-        <CategoriesGradient />
+      {
+        isInfoOpen &&
+        <RestaurantInfo
+          currentProfile={currentProfile}
+        />
+      }
 
-        <CategoriesCarousel categories={categories} />
-      </Flex>
     </>
   )
 }
